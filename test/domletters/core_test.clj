@@ -14,6 +14,12 @@
   (testing "Blank strings are not alphabetical."
     (is (not (is-alphabetical? "")))))
 
+(deftest test-get-words-from-line
+  (testing "Provided example from Bart."
+    (is (= 
+      '("This" "an" "Really") 
+      (get-words-from-line "This isn't an \"incomplete sentence\". Really\n not.")))))
+
 (defn create-buffered-reader [s]
   (->> s
     java.io.StringReader.
@@ -21,6 +27,7 @@
 
 (deftest test-get-words-from-reader
   (testing "Getting strings from a constructed BufferedInputReader."
-    (is (= '("The" "quick" "brown" "fox")
+    (is 
+      (= '("The" "quick" "brown" "fox")
       (get-words-from-reader 
         (create-buffered-reader "The ,quick\n\n quick br_wn\n brown fox. fox"))))))
