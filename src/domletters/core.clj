@@ -1,10 +1,15 @@
 (ns domletters.core
   (:gen-class))
 
+(defn is-ascii? [s]
+  "Determines whether a string contains only ASCII characters."
+  (every? #(< % 128) (map int s)))
+
 (defn is-alphabetical? [s]
   "Determines whether a string contains only alphabetical characters."
   (and 
     (not (clojure.string/blank? s))
+    (is-ascii? s)
     (every? #(Character/isLetter %) s)))
 
 (defn get-words-from-line [s]

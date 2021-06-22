@@ -11,6 +11,8 @@
     (is (every? is-alphabetical? ["abc" "sPoNgEbOb" "def"])))
   (testing "These are not alphabetical."
     (is (every? (complement is-alphabetical?) [",abc" "hjsas_eajs" "{}"])))
+  (testing "Non-ASCII letters are not alphabetical."
+    (is (every? (complement is-alphabetical?) ["α" "Ћ"])))
   (testing "Blank strings are not alphabetical."
     (is (not (is-alphabetical? "")))))
 
