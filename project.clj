@@ -1,6 +1,6 @@
 (defproject domletters "0.1.0"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Dominant letter counter."
+  :url "https://github.com/mbottini/domletters"
   :license {:name "MIT"
             :url "https://choosealicense.com/licenses/mit"
             :comment "MIT License"
