@@ -15,9 +15,24 @@
       '()
       (concat (get-words-from-line line) (get-words-from-reader reader)))))
 
+(defn frequency-dict [word]
+  (frequencies (clojure.string/lower-case word)))
+
+(defn full-frequency-dict [words]
+  (->> words
+    (map frequency-dict)
+    (apply merge-with +)))
+
+(defn get-dominant-letter-count [reader]
+  (->> reader
+    get-words-from-reader
+    full-frequency-dict
+    vals
+    (apply max)))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
   (let [reader (java.io.BufferedReader. *in*)]
-    (println (clojure.string/join " " (get-words-from-reader reader)))))
+    (println (get-dominant-letter-count reader))))
 
