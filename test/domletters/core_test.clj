@@ -38,8 +38,25 @@
     (is (= {\b 1, \o 2, \k 2, \e 3, \p 1, \r 1} (frequency-dict "bookkeeper")))
     (is (= {\a 2, \r 1, \b 1, \l 1, \e 1} (frequency-dict "Arable")))))
 
-(deftest test-full-frequency-dict
-  (testing "Combining the provided examples."
-    (is 
-      (= {\a 3 \n 1 \y 1 \b 2 \o 2 \k 2 \e 4 \p 1 \r 2 \l 1} 
-      (full-frequency-dict '("any" "bookkeeper" "Arable"))))))
+(deftest test-dominant-character-count
+  (testing "Provided examples from Bart."
+    (is (= 1 (dominant-character-count "any")))
+    (is (= 3 (dominant-character-count "bookkeeper")))
+    (is (= 2 (dominant-character-count "Arable")))))
+
+(defn create-buffered-file-reader [input-stream]
+  (->> input-stream
+    java.io.InputStreamReader.
+    java.io.BufferedReader.))
+    
+
+(deftest test-full-files
+  (testing "Testing provided resource files."
+    (is
+      (= 20
+         (with-open [r (clojure.java.io/input-stream "resources/sentence.txt")]
+           (sum-counts (create-buffered-file-reader r)))))
+    (is
+      (= 71
+         (with-open [r (clojure.java.io/input-stream "resources/swift.txt")]
+           (sum-counts (create-buffered-file-reader r)))))))

@@ -18,21 +18,21 @@
 (defn frequency-dict [word]
   (frequencies (clojure.string/lower-case word)))
 
-(defn full-frequency-dict [words]
-  (->> words
-    (map frequency-dict)
-    (apply merge-with +)))
-
-(defn get-dominant-letter-count [reader]
-  (->> reader
-    get-words-from-reader
-    full-frequency-dict
+(defn dominant-character-count [word]
+  (->> word
+    frequency-dict
     vals
     (apply max)))
+
+(defn sum-counts [reader]
+  (->> reader
+    get-words-from-reader
+    (map dominant-character-count)
+    (apply +)))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
   (let [reader (java.io.BufferedReader. *in*)]
-    (println (get-dominant-letter-count reader))))
+    (println (sum-counts reader))))
 
