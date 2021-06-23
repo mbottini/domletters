@@ -29,6 +29,11 @@ upper and lowercase letters as equivalent. Examples:
 
 ## Build and Run
 
+### Dependencies
+
+This project is built on top of Leiningen, Clojure, and the Java JRE. Thus,
+you'll need to install Leiningen.
+
 To build a standalone JAR, type
 
     lein uberjar
