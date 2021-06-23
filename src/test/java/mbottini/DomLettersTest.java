@@ -6,9 +6,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import java.io.InputStream;
-import java.io.ByteArrayInputStream;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -18,12 +15,6 @@ import java.util.stream.Collectors;
  */
 public class DomLettersTest 
 {
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
-    }
-
     @Test
     public void testIsAlphabetical() {
         assertTrue(DomLetters.isAlphabetical("abc"));
@@ -45,14 +36,10 @@ public class DomLettersTest
               .collect(Collectors.toList()));
     }
 
-    InputStream streamFromString(String s) {
-        return new ByteArrayInputStream(s.getBytes());
-    }
-
     @Test
     public void testGetWordsFromInputStream() {
         assertEquals(Arrays.asList("The", "quick", "brown", "fox"),
-            DomLetters.getWordsFromInputStream(streamFromString("The ,quick\n\n quick br_wn\n brown fox. fox"))
+            DomLetters.getWordsFromInputStream(TestHelper.streamFromString("The ,quick\n\n quick br_wn\n brown fox. fox"))
                .collect(Collectors.toList()));
     }
 
