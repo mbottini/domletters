@@ -19,10 +19,9 @@
 
 (defn get-words-from-reader [reader]
   "Gets all alphabetical words from a reader."
-  (let [line (.readLine reader)]
-    (if (nil? line)
-      '()
-      (concat (get-words-from-line line) (get-words-from-reader reader)))))
+  (->> (repeatedly #(.readLine reader))
+    (take-while (complement nil?))
+    (mapcat get-words-from-line)))
 
 (defn frequency-dict [word]
   "Gets the frequency dictionary of the lower-case of a word."
@@ -40,7 +39,7 @@
   (->> reader
     get-words-from-reader
     (map dominant-character-count)
-    (apply +)))
+    (reduce + 0)))
 
 (defn -main
   "Main function. Uses stdin as the Reader to count dominant characters."
