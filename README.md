@@ -53,8 +53,7 @@ so you can run that instead if you want, as in
     $ make -s run < swift.txt
     71
     $ # Standard "Big Text" - Crime and Punishment, by Fyodor Dostoevsky
-    $ curl -s https://www.gutenberg.org/files/2554/2554-0.txt | \
-      make -s run
+    $ curl -s https://www.gutenberg.org/files/2554/2554-0.txt | make -s run
     206454
 
 ## Acknowledgements
