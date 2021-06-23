@@ -1,5 +1,5 @@
 # domletters — count dominant letters
-<Your Name> and Bart Massey 2021
+Michael Bottini and Bart Massey 2021
 
 This repository contains a program that counts dominant
 letters in alphabetic words of an ASCII text read from
@@ -33,35 +33,29 @@ upper and lowercase letters as equivalent. Examples:
 C++. For an interpreted language like Python, delete these
 instructions and use those below.*)
 
-To build the program, type `make`. This will use the file
-named `Makefile` to compile the program.
+To build the program, type `make`. This runs `mvn package`.
 
-To run the program once it is built, say
+To run the program once it is built, type
 
-    ./domletters <input.txt
-
-where `input.txt` is the input file to be processed.
-
-## Build and Run
-
-(*These instructions are for an interpreted language like
-Python. For a compiled language like C++, delete these
-instructions and use those above. Note that your script
-should be marked executable and set up to run on a Linux box
-using a standard interpreter: for example, in Python the
-first line should be something like `#!/usr/bin/python3`.*)
-
-To run the program, say
-
-    ./domletters <input.txt
+    make run < input.txt
 
 where `input.txt` is the input file to be processed.
 
-## Example
+This runs `java -jar target/domletters-0.1.0.jar` behind the scenes,
+so you can run that instead if you want, as in
 
-When run using the file `sentence.txt` in this distribution,
-the program will produce a dominant letter count of 20. When
-run on `swift.txt` it will produce 71.
+    java -jar target/domletters-0.1.0.jar < input.txt
+
+## Example Runs
+
+    $ make run < sentence.txt
+    20
+    $ make run < swift.txt
+    71
+    $ # Crime and Punishment, by Fyodor Dostoevsky
+    $ curl -s https://www.gutenberg.org/files/2554/2554-0.txt | \
+      make run
+    206454
 
 ## Acknowledgements
 
