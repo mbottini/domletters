@@ -55,6 +55,10 @@ Alternatively, you can run the uberjar with the Java JRE.
     20
     $ lein run < resources/swift.txt
     71
+    $ # Crime and Punishment, by Fyodor Dostoevsky
+    $ curl -s https://www.gutenberg.org/files/2554/2554-0.txt | \ 
+      java -jar target/uberjar/domletters-0.1.0-standalone.jar
+    206454
 
 ## Acknowledgements
 
