@@ -1,2 +1,7 @@
 #!/bin/sh
+
+if [ ! -e target/domletters-0.1.0.jar ]; then
+    QUIET_FLAG="-q" make -s
+fi
+
 make -s run
