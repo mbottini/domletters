@@ -37,7 +37,7 @@ To build the program, type `make`. This runs `mvn package`.
 
 To run the program once it is built, type
 
-    make -s run < input.txt
+    ./domletters < input.txt
 
 where `input.txt` is the input file to be processed.
 
@@ -48,12 +48,12 @@ so you can run that instead if you want, as in
 
 ## Example Runs
 
-    $ make -s run < sentence.txt
+    $ ./domletters < sentence.txt
     20
-    $ make -s run < swift.txt
+    $ ./domletters < swift.txt
     71
     $ # Standard "Big Text" - Crime and Punishment, by Fyodor Dostoevsky
-    $ curl -s https://www.gutenberg.org/files/2554/2554-0.txt | make -s run
+    $ curl -s https://www.gutenberg.org/files/2554/2554-0.txt | ./domletters
     206454
 
 ## Acknowledgements
