@@ -29,11 +29,8 @@ upper and lowercase letters as equivalent. Examples:
 
 ## Build and Run
 
-(*These instructions are for a compiled language like
-C++. For an interpreted language like Python, delete these
-instructions and use those below.*)
-
-To build the program, type `make`. This runs `mvn package`.
+To build the program, type `make`. This runs `mvn package` to build the
+jar. The jar is located in `target`.
 
 To run the program once it is built, type
 
