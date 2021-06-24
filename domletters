@@ -1,7 +1,14 @@
 #!/bin/sh
 
-if [ ! -e target/domletters-0.1.0.jar ]; then
-    QUIET_FLAG="-q" make -s
-fi
+# We can't be sure that this was run in the current directory, so we force
+# a change to the directory. Note that we can't use pushd, as it's non-POSIX.
+cd $(dirname $0)
 
-make -s run
+    # If the jar doesn't exist, we make it silently.
+    if [ ! -e target/domletters-0.1.0.jar ]; then
+        QUIET_FLAG="-q" make -s
+    fi
+
+    make -s run
+
+cd - > /dev/null
