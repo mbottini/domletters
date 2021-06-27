@@ -17,14 +17,14 @@ public class DomLetters {
     /// Returns a String containing the words in a line.
     public static Stream<String> getWordsFromLine(String s) {
         return Arrays.stream(s.split("\\s+"))
-            .filter(word -> isAlphabetical(word));
+            .filter(DomLetters::isAlphabetical);
     }
 
     /// Gets every line from an InputStream and applies GetWordsFromLine to them,
     /// concatenating the result into a single Stream.
     public static Stream<String> getWordsFromInputStream(InputStream in) {
         return new BufferedReader(new InputStreamReader(in)).lines()
-           .flatMap(s -> getWordsFromLine(s));
+            .flatMap(DomLetters::getWordsFromLine);
     }
 
     /// Obtains a frequency dictionary of the characters in a string.
@@ -45,7 +45,7 @@ public class DomLetters {
 
     public static Integer sumCounts(InputStream in) {
         return getWordsFromInputStream(in)
-           .map(s -> getDominantCharacterCount(s))
+           .map(DomLetters::getDominantCharacterCount)
            .mapToInt(opt -> opt.orElse(0))
            .sum();
     }
