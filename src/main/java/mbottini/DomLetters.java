@@ -40,7 +40,7 @@ public class DomLetters {
     /// Returns the dominant character count of a string. Note that it's
     /// an Optional, in the strange case that we've found an empty string.
     public static Optional<Integer> getDominantCharacterCount(String s) {
-        return frequencyDict(s).values().stream().max((x, y) -> x.compareTo(y));
+        return frequencyDict(s).values().stream().max(Integer::compareTo);
     }
 
     public static Integer sumCounts(InputStream in) {
